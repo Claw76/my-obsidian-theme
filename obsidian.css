@@ -1,0 +1,234 @@
+/* @settings
+name: Letards Snippet Theme
+id: letards-snippet-theme
+settings:
+  - 
+    id: letard-tpc
+    title: Toggle Plugin Compatability
+    description: Toggle Plugin Compatability
+    type: class-toggle
+    default: true
+  -
+    id: letard-ssr
+    title: Hide Sidebar Ribbons
+    description: Hide Sidebar Ribbons
+    type: class-toggle
+    default: true
+  -
+    id: letard-hafife
+    title: Highlight Active File in File Explorer
+    description: Add a bottom-border on the active file in the file explorer
+    type: class-toggle
+    default: true
+  -
+    id: letard-hnbife
+    title: Hide Navigation Buttons in File Explorer
+    description: Hide the navigation buttons in the file explorer
+    type: class-toggle
+    default: true
+  - 
+    id: letard-hrf
+    title: Hide Resource Folders
+    description: Hide Resource Folders in File Explorer
+    type: class-toggle
+    default: false
+  -
+    id: letard-male
+    title: Active Line Emphasized
+    description: Emphasizes Active Line
+    type: class-toggle
+    default: true
+  -  
+    id: color-letard-active
+    title: Active Color
+    type: variable-color
+    opacity: false
+    format: hex
+    default: '#8273e6'
+  - 
+    id: interactive-accent
+    title: Accent Color
+    type: variable-color
+    opacity: false
+    format: hex
+    default: '#8273e6'
+  -
+*/
+
+:root {
+  --color-black: hsla(0, 0%, 13%, 1);
+  --color-dark-gray: hsla(0, 0%, 33%, 1);
+  --color-button-hover: hsla(212, 17%, 80%, 0.3);
+  --button-radius: 4px;
+  --color-letard-active: #8273e6; /*#7aa0cb*/
+  /* --interactive-accent-hover: #7396bf; #7b6cd9 */
+}
+
+/* -------------------------------------- */
+/* Highlight Active File in File Explorer */
+/* -------------------------------------- */
+
+.letard-hafife .nav-file-title.is-active {
+  border-bottom: 1px solid var(--color-letard-active);
+}
+
+/* -------------------------------------- */
+/* Bigger Collapse Icons in File Explorer */
+/* -------------------------------------- */
+
+.nav-folder-title {
+  padding: 1px 10px 0 0;
+}
+
+.nav-folder-collapse-indicator {
+  width: auto;
+  padding: 0 2px 0 26px;
+  margin-right: 3px;
+}
+
+.nav-folder-collapse-indicator > svg {
+  width: 9px;
+  height: 9px;
+}
+
+/* ------------------------------------------ */
+/* Remove Navigation Buttons in File Explorer */
+/* ------------------------------------------ */
+
+.letard-hnbife .workspace-leaf-content[data-type="file-explorer"] .nav-header {
+  display: none;
+}
+
+/* ----------------------------------- */
+/* Better Sidebar (from Mado Theme) */
+/* ----------------------------------- */
+
+/* Left dock Ribbon hidden (includes expand button) */
+.letard-ssr .workspace-ribbon {
+  visibility: collapse;
+  position: absolute;
+}
+
+/* Show expand button when hovered */
+.letard-ssr .workspace-ribbon-collapse-btn {
+  position: fixed;
+  visibility: visible;
+  top: 0;
+  opacity: 0;
+  padding: 7px;
+  color: var(--color-dark-gray);
+  border-radius: var(--button-radius);
+  transition: 0.1s background, 0.1s opacity;
+}
+
+/* Fix left ribbon position for easier hovering */
+.letard-ssr
+  .workspace-ribbon.side-dock-ribbon.mod-left
+  .workspace-ribbon-collapse-btn {
+  left: -1px;
+}
+
+/* Limit right ribbon position to right */
+.letard-ssr .mod-right.workspace-ribbon,
+.letard-ssr .mod-right .workspace-ribbon-collapse-btn {
+  right: 0;
+}
+
+.letard-ssr .side-dock-settings {
+  position: fixed;
+  visibility: visible;
+  bottom: 21px;
+  padding: 7px;
+  margin-bottom: 0;
+  opacity: 0.4;
+  color: var(--color-dark-gray);
+  border-radius: var(--button-radius);
+  transition: 0.1s background, 0.1s opacity;
+}
+
+/* Show Collapse buttons and highligh settings dock on hover */
+.letard-ssr .workspace-ribbon-collapse-btn:hover,
+.letard-ssr .side-dock-settings:hover {
+  visibility: visible;
+  opacity: 1;
+  background: var(--color-button-hover);
+  border: 1px solid var(--color-gray);
+  color: var(--color-black);
+}
+
+/* Remove style for border-on-active */
+.letard-ssr .workspace-tabs .workspace-leaf,
+.letard-ssr .workspace-tabs .workspace-leaf.mod-active {
+  border: none;
+}
+
+/* -------------------- */
+/* Plugin Compatability */
+/* -------------------- */
+
+/* Commander: Remove Add button in Title bar */
+.letard-tpc .titlebar-button.cmdr {
+  display: none;
+}
+
+/* Commander: Place Add button first in Markdown View header */
+.letard-tpc .view-actions > .cmdr-adder {
+  order: -1;
+}
+
+/* Calendar: Highlight current day */
+.letard-tpc .workspace-leaf-content[data-type="calendar"] .today:not(.active) {
+  outline: var(--color-letard-active) solid 1px;
+  outline-offset: -1px;
+}
+
+/*Kanban Checkboxes */
+/* .letard-tpc .kanban-plugin__item-prefix-button-wrapper input[type="checkbox"],
+.letard-tpc .kanban-plugin__item.is-complete .task-list-item-checkbox {
+  filter: unset !important;
+}
+
+.letard-tpc .kanban-plugin__item.is-complete .task-list-item-checkbox {
+  background-color: #7aa0cb;
+} */
+
+/* ------------- */
+/* Miscellaneous */
+/* ------------- */
+
+/* Remove Action Buttons from "No File Open"-view */
+.empty-state-action-list {
+  display: none;
+}
+
+/* Make Latex font size bigger */
+mjx-container {
+  line-height: 0px;
+  font-size: calc(1.25 * var(--editor-font-size));
+}
+
+/* Hide folders with "_" prefix */
+.letard-hrf .nav-folder-title[data-path^="_"] {
+  display: none;
+}
+
+/* Emphasize Active Line (from Shimmering Focus) */
+.letard-male :is(.cm-active, .CodeMirror-activeline).HyperMD-codeblock::before,
+body
+  :is(.cm-active, .CodeMirror-activeline):not(.HyperMD-quote, .HyperMD-header, .HyperMD-codeblock)::before {
+  content: " ";
+  height: 100%;
+  position: absolute;
+  left: -8px;
+  top: 0px;
+  border-left: 4px solid hsl(220 35% 73%);
+}
+body:not(.letard-male)
+  :is(.cm-active, .CodeMirror-activeline).HyperMD-list-line::before {
+  top: 2px;
+}
+.letard-male .CodeMirror-activeline .CodeMirror-linebackground,
+.letard-male .cm-active:not(.cm-gutterElement) {
+  background-color: hsl(62 11% 63% / 8%);
+  border-radius: 7px;
+}
