@@ -3,9 +3,10 @@
 What was once just a collection of snippets in my vault is now a "theme".  
 Toggling features on/off is made possible by the `Style Settings`-plugin.
 
-{% note %}  
-This Theme is mainly for my personal use and is basically just an extension of the default theme. Don't expect this to be a "good" theme in any shape or form.  
-{% note %}
+
+> This Theme is mainly for my personal use and is basically just an extension of the default theme.  
+> Don't expect this to be a "good" theme in any shape or form.  
+
 
 ## Credits
 
