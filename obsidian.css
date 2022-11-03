@@ -73,6 +73,15 @@ settings:
 }
 
 /* -------------------------------------- */
+/* Make Status bar smaller but full width */
+/* -------------------------------------- */
+.status-bar {
+    height: 25px;
+    position: static;
+    border-radius: 0;
+}
+
+/* -------------------------------------- */
 /* Bigger Collapse Icons in File Explorer */
 /* -------------------------------------- */
 
