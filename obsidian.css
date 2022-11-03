@@ -32,6 +32,7 @@ settings:
     description: Miscellaneous: Full-width status bar, etc.
     type: class-toggle
     default: true
+  -
 */
 
 :root {
