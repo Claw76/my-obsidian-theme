@@ -29,7 +29,7 @@ settings:
   -  
     id: letard-misc
     title: Miscellaneous
-    description: Miscellaneous: Full-width status bar, etc.
+    description: Miscellaneous, Full-width status bar, etc.
     type: class-toggle
     default: true
   -
