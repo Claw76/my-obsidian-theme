@@ -15,18 +15,6 @@ settings:
     type: class-toggle
     default: true
   -
-    id: letard-hafife
-    title: Highlight Active File in File Explorer
-    description: Add a bottom-border on the active file in the file explorer
-    type: class-toggle
-    default: true
-  -
-    id: letard-hnbife
-    title: Hide Navigation Buttons in File Explorer
-    description: Hide the navigation buttons in the file explorer
-    type: class-toggle
-    default: true
-  - 
     id: letard-hrf
     title: Hide Resource Folders
     description: Hide Resource Folders in File Explorer
@@ -39,20 +27,11 @@ settings:
     type: class-toggle
     default: true
   -  
-    id: color-letard-active
-    title: Active Color
-    type: variable-color
-    opacity: false
-    format: hex
-    default: '#8273e6'
-  - 
-    id: interactive-accent
-    title: Accent Color
-    type: variable-color
-    opacity: false
-    format: hex
-    default: '#8273e6'
-  -
+    id: letard-misc
+    title: Miscellaneous
+    description: Miscellaneous: Full-width status bar, etc.
+    type: class-toggle
+    default: true
 */
 
 :root {
@@ -60,7 +39,7 @@ settings:
     --color-dark-gray: hsla(0, 0%, 33%, 1);
     --color-button-hover: hsla(212, 17%, 80%, 0.3);
     --button-radius: 4px;
-    --color-letard-active: #8273e6; /*#7aa0cb*/
+    /* --color-letard-active: #8273e6; #7aa0cb */
     /* --interactive-accent-hover: #7396bf; #7b6cd9; #5c7898*/
 }
 
@@ -68,44 +47,17 @@ settings:
 /* Highlight Active File in File Explorer */
 /* -------------------------------------- */
 
-.letard-hafife .nav-file-title.is-active {
-    border-bottom: 1px solid var(--color-letard-active);
+.nav-file-title.is-active {
+    border-bottom: 1px solid var(--color-accent);
 }
 
 /* -------------------------------------- */
 /* Make Status bar smaller but full width */
 /* -------------------------------------- */
-.status-bar {
+.letard-misc .status-bar {
     height: 25px;
     position: static;
     border-radius: 0;
-}
-
-/* -------------------------------------- */
-/* Bigger Collapse Icons in File Explorer */
-/* -------------------------------------- */
-
-/* .nav-folder-title {
-  padding: 1px 10px 0 0;
-}
-
-.nav-folder-collapse-indicator {
-  width: auto;
-  padding: 0 2px 0 26px;
-  margin-right: 3px;
-}
-
-.nav-folder-collapse-indicator > svg {
-  width: 9px;
-  height: 9px;
-} */
-
-/* ------------------------------------------ */
-/* Remove Navigation Buttons in File Explorer */
-/* ------------------------------------------ */
-
-.letard-hnbife .workspace-leaf-content[data-type="file-explorer"] .nav-header {
-    display: none;
 }
 
 /* ----------------------------------- */
@@ -117,6 +69,13 @@ settings:
     visibility: collapse;
     position: absolute;
 }
+
+/* TODO: Make Collapse work -> correct positioning */
+
+/* Show Collapse button */
+/* .letard-ssr .sidebar-toggle-button.mod-left {
+    visibility: visible;
+} */
 
 /* Show expand button when hovered */
 /* .letard-ssr .workspace-ribbon-collapse-btn {
@@ -131,16 +90,10 @@ settings:
 } */
 
 /* Fix left ribbon position for easier hovering */
-.letard-ssr
+/* .letard-ssr
     .workspace-ribbon.side-dock-ribbon.mod-left
     .workspace-ribbon-collapse-btn {
     left: -1px;
-}
-
-/* Limit right ribbon position to right */
-/* .letard-ssr .mod-right.workspace-ribbon,
-.letard-ssr .mod-right .workspace-ribbon-collapse-btn {
-    right: 0;
 } */
 
 .letard-ssr .side-dock-settings {
@@ -155,8 +108,7 @@ settings:
     transition: 0.1s background, 0.1s opacity;
 }
 
-/* Show Collapse buttons and highligh settings dock on hover */
-/* .letard-ssr .workspace-ribbon-collapse-btn:hover, */
+/* Highlight settings dock on hover */
 .letard-ssr .side-dock-settings:hover {
     visibility: visible;
     opacity: 1;
